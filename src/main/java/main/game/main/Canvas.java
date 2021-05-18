@@ -12,6 +12,7 @@ class Canvas extends JPanel {
 
     private Ball ball;
     private Paddle paddle;
+    private int score, remaining;
     private ArrayList<Brick> bricks;
 
     public void reload(Ball ball, Paddle paddle, ArrayList<Brick> bricks) {
@@ -19,6 +20,14 @@ class Canvas extends JPanel {
         this.paddle = paddle;
         this.bricks = bricks;
         this.repaint();
+    }
+
+    public void setScore(int score) {
+        this.score = score;
+    }
+
+    public void setRemaining(int remaining) {
+        this.remaining = remaining;
     }
 
     @Override
@@ -48,6 +57,17 @@ class Canvas extends JPanel {
             for(Brick b : this.bricks) {
                 Rectangle2D.Double brick = new Rectangle2D.Double(b.getX(), b.getY(), b.getWidth(), b.getHeight());
                 g2d.fill(brick);
+            }
+
+            Font font = new Font("Arial", Font.PLAIN, 20);
+            g2d.setFont(font);
+            g2d.setColor(Color.WHITE);
+
+            if(this.score >= 0) {
+                g2d.drawString("Score: " + this.score, 4, getHeight() - 22);
+            }
+            if(this.remaining >= 0) {
+                g2d.drawString("Remaining: " + this.remaining, getWidth() - 130, getHeight() - 22);
             }
         }
     }

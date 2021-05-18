@@ -43,7 +43,7 @@ public class Game implements GameComponents, KeyListener {
         this.audioPlayer = new AudioPlayer();
         this.speed = levels.get(level - 1).getSpeed();
         this.bricks = levels.get(level - 1).getBricks();
-
+        this.score = 0;
         GameLauncher.setStatusMessage("Du spielst gerade Level " + level + "!");
     }
 
@@ -90,6 +90,8 @@ public class Game implements GameComponents, KeyListener {
             ball.setY(ball.getY() + ball.getDeltay());
 
             canvas.reload(ball, paddle, this.bricks);
+            canvas.setScore(this.score);
+            canvas.setRemaining(bricks.size());
 
             //Player has failed, ball is behind paddle
             if((ball.getY() + 2 * ball.getRadius()) > canvas.getHeight()) {
