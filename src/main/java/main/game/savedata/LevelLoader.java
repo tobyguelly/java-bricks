@@ -6,17 +6,21 @@ import main.game.utils.Files;
 
 import java.io.*;
 import java.util.ArrayList;
+import java.util.Random;
 
 public class LevelLoader {
 
     public static ArrayList<Level> getDefaultLevels() {
         ArrayList<Level> levels = new ArrayList<>();
+        Random random = new Random();
         int dx = 110, dy = 30;
         for(int i = 0; i < 6; i++) {
             ArrayList<Brick> bricks = new ArrayList<>();
-            for(int j = 0; j < i + 1; j++) {
+            for(int j = 0; j < i + 8; j++) {
                 for(int k = 0; k < 5; k++) {
-                    bricks.add(new Brick(100, 20, dx * k, dy * j));
+                    if(random.nextInt(10) > j || j < i + 1) {
+                        bricks.add(new Brick(100, 20, dx * k, dy * j));
+                    }
                 }
             }
             levels.add(new Level(i + 1, 20 - 3*(i + 1) + 2, bricks));

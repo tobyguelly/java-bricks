@@ -26,6 +26,7 @@ public class Game implements GameComponents, KeyListener {
     private Canvas canvas;
 
     public Game(int level) {
+        /*
         try {
             this.levels = LevelLoader.loadLevels();
         } catch (Exception e) {
@@ -35,6 +36,8 @@ public class Game implements GameComponents, KeyListener {
             }
             this.levels = LevelLoader.getDefaultLevels();
         }
+         */
+        this.levels = LevelLoader.getDefaultLevels();
         this.level = level;
         this.gameover = false;
         this.audioPlayer = new AudioPlayer();
@@ -63,6 +66,8 @@ public class Game implements GameComponents, KeyListener {
         audioPlayer.play();
 
         paddle.setX(frame.getWidth() / 2 - paddle.getWidth() / 2);
+        ball.setX(frame.getWidth() / 2 + ball.getRadius() / 2);
+        ball.setY(frame.getHeight() - paddle.getY() + 75 + 2*ball.getRadius());
 
         frame.addWindowListener(new java.awt.event.WindowAdapter() {
             @Override
@@ -83,6 +88,8 @@ public class Game implements GameComponents, KeyListener {
             }
             ball.setX(ball.getX() + ball.getDeltax());
             ball.setY(ball.getY() + ball.getDeltay());
+
+            canvas.reload(ball, paddle, this.bricks);
 
             //Player has failed, ball is behind paddle
             if((ball.getY() + 2 * ball.getRadius()) > canvas.getHeight()) {
@@ -134,7 +141,6 @@ public class Game implements GameComponents, KeyListener {
                     break;
                 }
             }
-            canvas.reload(ball, paddle, this.bricks);
             try {
                 Thread.sleep(this.speed);
             } catch (InterruptedException e) {
