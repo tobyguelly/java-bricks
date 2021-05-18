@@ -19,7 +19,7 @@ public class LevelLoader {
                     bricks.add(new Brick(100, 20, dx * k, dy * j));
                 }
             }
-            levels.add(new Level(i + 1, 25 - 5*i + 3, bricks));
+            levels.add(new Level(i + 1, 20 - 3*i + 3, bricks));
         }
         return levels;
     }
