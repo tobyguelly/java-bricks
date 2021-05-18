@@ -5,8 +5,7 @@ import java.util.ArrayList;
 
 public class Level implements Serializable {
 
-    private int level;
-    private int speed;
+    private int level, speed;
     private ArrayList<Brick> bricks;
 
     public Level(int level, int speed, ArrayList<Brick> bricks) {

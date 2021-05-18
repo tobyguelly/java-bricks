@@ -40,8 +40,8 @@ public class HighscoreDialog extends JDialog implements ActionListener {
             for(Map.Entry<String, Integer> entry : highscores.entrySet()) {
                 count++;
                 sb.append("<tr>");
-                sb.append("<td>"+entry.getKey()+"</td>");
-                sb.append("<td>"+entry.getValue()+"</td>");
+                sb.append("<td>" + entry.getKey() + "</td>");
+                sb.append("<td>" + entry.getValue() + "</td>");
                 sb.append("</tr>");
                 if(count == 10) break;
             }

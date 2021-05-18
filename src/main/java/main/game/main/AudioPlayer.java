@@ -22,6 +22,7 @@ public class AudioPlayer implements ActionListener {
     public AudioPlayer() {
         try {
             if(AudioPlayer.SOUND) {
+                //Loading file from resources package
                 File file = new File(getClass().getClassLoader().getResource("music.wav").getPath());
                 input = AudioSystem.getAudioInputStream(file);
                 clip = AudioSystem.getClip();

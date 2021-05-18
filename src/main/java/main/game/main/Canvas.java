@@ -27,19 +27,23 @@ class Canvas extends JPanel {
             super.paintComponent(g);
             Graphics2D g2d = (Graphics2D) g;
 
+            //Background color
             g2d.setColor(Color.DARK_GRAY);
             g2d.fillRect(0, 0, getWidth(), getHeight());
 
+            //Ball
             g2d.setColor(Color.RED);
             Ellipse2D.Double ball = new Ellipse2D.Double(this.ball.getX(), this.ball.getY(), 2 * this.ball.getRadius(), 2 * this.ball.getRadius());
             g2d.fill(ball);
 
             paddle.setY(getHeight() - paddle.getHeight() * 2);
 
+            //Paddle
             g2d.setColor(Color.CYAN);
             Rectangle2D.Double paddle = new Rectangle2D.Double(this.paddle.getX(), this.paddle.getY(), this.paddle.getWidth(), this.paddle.getHeight());
             g2d.fill(paddle);
 
+            //All bricks
             g2d.setColor(Color.GREEN);
             for(Brick b : this.bricks) {
                 Rectangle2D.Double brick = new Rectangle2D.Double(b.getX(), b.getY(), b.getWidth(), b.getHeight());

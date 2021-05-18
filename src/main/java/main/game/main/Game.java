@@ -20,11 +20,8 @@ public class Game implements GameComponents, KeyListener {
 
     private AudioPlayer audioPlayer;
 
-    private int level;
+    private int level, speed, score;
     private boolean gameover;
-    private int speed;
-
-    private int score;
 
     private Canvas canvas;
 
@@ -35,7 +32,6 @@ public class Game implements GameComponents, KeyListener {
             try {
                 LevelLoader.saveLevels(LevelLoader.getDefaultLevels());
             } catch (Exception ignored) {
-
             }
             this.levels = LevelLoader.getDefaultLevels();
         }
@@ -94,6 +90,8 @@ public class Game implements GameComponents, KeyListener {
                 close(frame, "Du hast Level " + level + " verloren! Punke: " + score);
                 break;
             }
+
+            //Ball collides with walls, reversing directions
             if(ball.getY() < 0) ball.setDeltay(-ball.getDeltay());
             if((ball.getX() + 2 * ball.getRadius()) > canvas.getWidth()) ball.setDeltax(-ball.getDeltax());
             if(ball.getX() < 0) ball.setDeltax(-ball.getDeltax());
@@ -147,7 +145,6 @@ public class Game implements GameComponents, KeyListener {
 
     @Override
     public void keyTyped(KeyEvent e) {
-
     }
 
     @Override
@@ -186,7 +183,6 @@ public class Game implements GameComponents, KeyListener {
 
     @Override
     public void keyReleased(KeyEvent e) {
-
     }
 
     @Override
