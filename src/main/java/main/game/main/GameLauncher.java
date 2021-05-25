@@ -56,7 +56,7 @@ public class GameLauncher implements ActionListener {
             playerLevel = ProgressLoader.loadLevel();
         } catch (Exception ignored) {
         }
-        for(int i = 1; i <= Math.min(LevelLoader.getDefaultLevels().size(), playerLevel + 1); i++) {
+        for(int i = 1; i <= Math.min(LevelLoader.generateDefaultLevels().size(), playerLevel + 1); i++) {
             JButton button = new JButton("Level " + i);
             buttons.add(button);
             button.addActionListener(this);

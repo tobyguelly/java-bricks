@@ -10,7 +10,7 @@ import java.util.Random;
 
 public class LevelLoader {
 
-    public static ArrayList<Level> getDefaultLevels() {
+    public static ArrayList<Level> generateDefaultLevels() {
         ArrayList<Level> levels = new ArrayList<>();
         Random random = new Random();
         int dx = 110, dy = 30;
@@ -25,20 +25,6 @@ public class LevelLoader {
             }
             levels.add(new Level(i + 1, 20 - 3*(i + 1) + 2, bricks));
         }
-        return levels;
-    }
-
-    public static void saveLevels(ArrayList<Level> levels) throws Exception {
-        ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(Files.LEVEL_FILE));
-        oos.writeObject(levels);
-        oos.flush();
-        oos.close();
-    }
-
-    public static ArrayList<Level> loadLevels() throws Exception {
-        ObjectInputStream ois = new ObjectInputStream(new FileInputStream(Files.LEVEL_FILE));
-        ArrayList<Level> levels = (ArrayList<Level>) ois.readObject();
-        ois.close();
         return levels;
     }
 }

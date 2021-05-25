@@ -26,18 +26,7 @@ public class Game implements GameComponents, KeyListener {
     private Canvas canvas;
 
     public Game(int level) {
-        /*
-        try {
-            this.levels = LevelLoader.loadLevels();
-        } catch (Exception e) {
-            try {
-                LevelLoader.saveLevels(LevelLoader.getDefaultLevels());
-            } catch (Exception ignored) {
-            }
-            this.levels = LevelLoader.getDefaultLevels();
-        }
-         */
-        this.levels = LevelLoader.getDefaultLevels();
+        this.levels = LevelLoader.generateDefaultLevels();
         this.level = level;
         this.gameover = false;
         this.audioPlayer = new AudioPlayer();
