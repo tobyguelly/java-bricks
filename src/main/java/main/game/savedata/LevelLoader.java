@@ -19,7 +19,9 @@ public class LevelLoader {
             for(int j = 0; j < i + 8; j++) {
                 for(int k = 0; k < 5; k++) {
                     if(random.nextInt(10) > j || j < i + 1) {
-                        bricks.add(new Brick(100, 20, dx * k, dy * j));
+                        if(!((k == 0 || k == 4) && j < 2)) {
+                            bricks.add(new Brick(100, 20, dx * k, dy * j));
+                        }
                     }
                 }
             }
