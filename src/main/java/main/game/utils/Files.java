@@ -2,8 +2,8 @@ package main.game.utils;
 
 public class Files {
 
-    public final static String HIGHSCORE_FILE = "player.highscores";
+    public final static String HIGHSCORE_FILE = "highscores.sav";
 
-    public final static String PROGRESS_FILE = "player.level";
+    public final static String PROGRESS_FILE = "level.sav";
 
 }
