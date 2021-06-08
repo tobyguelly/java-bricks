@@ -4,13 +4,14 @@ import java.io.Serializable;
 
 public class Brick implements Serializable {
 
-    private int width, height, x, y;
+    private int width, height, x, y, health;
 
-    public Brick(int width, int height, int x, int y) {
+    public Brick(int width, int height, int x, int y, int health) {
         this.width = width;
         this.height = height;
         this.x = x;
         this.y = y;
+        this.health = health;
     }
 
     public int getWidth() {
@@ -43,5 +44,13 @@ public class Brick implements Serializable {
 
     public void setY(int y) {
         this.y = y;
+    }
+
+    public int getHealth() {
+        return health;
+    }
+
+    public void setHealth(int health) {
+        this.health = health;
     }
 }

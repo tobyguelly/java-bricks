@@ -53,8 +53,11 @@ class Canvas extends JPanel {
             g2d.fill(paddle);
 
             //All bricks
-            g2d.setColor(Color.GREEN);
             for(Brick b : this.bricks) {
+                int health = b.getHealth();
+                if(health == 1) g2d.setColor(Color.GREEN);
+                else if(health == 2) g2d.setColor(Color.YELLOW);
+                else g2d.setColor(Color.ORANGE);
                 Rectangle2D.Double brick = new Rectangle2D.Double(b.getX(), b.getY(), b.getWidth(), b.getHeight());
                 g2d.fill(brick);
             }
@@ -64,10 +67,10 @@ class Canvas extends JPanel {
             g2d.setColor(Color.WHITE);
 
             if(this.score >= 0) {
-                g2d.drawString("Score: " + this.score, 4, getHeight() - 22);
+                g2d.drawString("Score: " + this.score, 4, 22);
             }
             if(this.remaining >= 0) {
-                g2d.drawString("Remaining: " + this.remaining, getWidth() - 130, getHeight() - 22);
+                g2d.drawString("Remaining: " + this.remaining, getWidth() - 130, 22);
             }
         }
     }

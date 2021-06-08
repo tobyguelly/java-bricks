@@ -114,7 +114,8 @@ public class Game implements GameComponents, KeyListener {
                 ball.setDeltay(-ball.getDeltay());
             }
             for(Brick b : toRemove) {
-                this.bricks.remove(b);
+                b.setHealth(b.getHealth() - 1);
+                if(b.getHealth() <= 0) this.bricks.remove(b);
                 if(this.bricks.size() == 0) {
                     int playerLevel = 0;
                     try {
@@ -161,15 +162,13 @@ public class Game implements GameComponents, KeyListener {
         GameLauncher.setActive(false);
         GameLauncher.setStatusMessage(message);
         GameLauncher.reloadLevels();
-        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("dd.MM.yyyy HH:mm:ss");
-        LocalDateTime now = LocalDateTime.now();
         try {
             if(gameover) {
                 String name = JOptionPane.showInputDialog(frame, "Speichere deinen Highscore!", "Dein Name");
                 if(name != null && name.length() > 1 && name.length() < 30) {
                     HighscoreLoader.saveHighscore(name, this.score);
                 } else {
-                    HighscoreLoader.saveHighscore(dtf.format(now), this.score);
+                    HighscoreLoader.saveHighscore("User", this.score);
                 }
             }
         } catch (Exception ignored) {

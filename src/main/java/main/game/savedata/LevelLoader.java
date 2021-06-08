@@ -14,18 +14,21 @@ public class LevelLoader {
         ArrayList<Level> levels = new ArrayList<>();
         Random random = new Random();
         int dx = 110, dy = 30;
-        for(int i = 0; i < 6; i++) {
+        for(int level = 0; level < 6; level++) {
             ArrayList<Brick> bricks = new ArrayList<>();
-            for(int j = 0; j < i + 8; j++) {
-                for(int k = 0; k < 5; k++) {
-                    if(random.nextInt(10) > j || j < i + 1) {
-                        if(!((k == 0 || k == 4) && j < 2)) {
-                            bricks.add(new Brick(100, 20, dx * k, dy * j));
+            for(int row = 1; row < level + 8; row++) {
+                for(int col = 0; col < 5; col++) {
+                    if(random.nextInt(10) > row || row < level + 1) {
+                        if(!((col == 0 || col == 4) && row < 2)) {
+                            int maxHealth = 3;
+                            if(level < 3) maxHealth = 2;
+                            if(level == 0) maxHealth = 1;
+                            bricks.add(new Brick(100, 20, dx * col, dy * row, 1 + (int) (Math.random() * maxHealth)));
                         }
                     }
                 }
             }
-            levels.add(new Level(i + 1, 20 - 3*(i + 1) + 2, bricks));
+            levels.add(new Level(level + 1, 9 - (level + 1), bricks));
         }
         return levels;
     }
