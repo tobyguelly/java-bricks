@@ -1,6 +1,8 @@
 *.level
 *.levels
 *.highscores
+*.sav
+*.save
 
 /build
 /dist
