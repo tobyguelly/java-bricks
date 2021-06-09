@@ -9,5 +9,5 @@ public class Dimensions {
     public static int PADDLE_X = 110, PADDLE_Y = 240;
     public static int PADDLE_WIDTH = 130;
     public static int PADDLE_HEIGHT = 20;
-    public static int PADDLE_DELTA = 25;
+    public static int PADDLE_DELTA = 50;
 }
