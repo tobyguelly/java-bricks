@@ -167,8 +167,6 @@ public class Game implements GameComponents, KeyListener {
                 String name = JOptionPane.showInputDialog(frame, "Speichere deinen Highscore!", "Dein Name");
                 if(name != null && name.length() > 1 && name.length() < 30) {
                     HighscoreLoader.saveHighscore(name, this.score);
-                } else {
-                    HighscoreLoader.saveHighscore("User", this.score);
                 }
             }
         } catch (Exception ignored) {

@@ -20,8 +20,12 @@ public class HighscoreLoader {
     public static void saveHighscore(String name, int score) throws Exception {
         ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(Files.HIGHSCORE_FILE));
         if(scores.size() < 1) scores = new HashMap<>();
-        scores.put(name, score);
-        oos.writeObject(scores);
+        if(scores.containsKey(name)) {
+            if(scores.get(name) < score) {
+                scores.put(name, score);
+                oos.writeObject(scores);
+            }
+        }
         oos.flush();
         oos.close();
     }
